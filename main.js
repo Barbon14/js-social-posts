@@ -61,8 +61,16 @@ const cont = document.getElementById("container");
 for (let i = 0; i < posts.length; i++) {
     
     let {autore, fotoProfilo, data, testo, immagine, likes} = posts[i];
-    console.log(fotoProfilo);
     
+    // aggiungo un contollo: se il post non ha immagine il div relativo non viene inserito 
+    let immaginePost = '';
+    if (immagine !== '') {
+        immaginePost = `
+        <div class="post__image">
+            <img src="${immagine}" alt="">
+        </div>`
+    }
+
     cont.innerHTML +=`
     <div class="post">
         <div class="post__header">
@@ -83,9 +91,7 @@ for (let i = 0; i < posts.length; i++) {
         <div class="post__text">
             ${testo}
         </div>
-        <div class="post__image">
-            <img src="${immagine}" alt="">
-        </div>
+        ${immaginePost}
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
