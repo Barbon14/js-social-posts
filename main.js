@@ -57,6 +57,7 @@ const posts = [
 /* genero in pagina i post
 - uso un ciclo for per generare i post con le informazioni degli oggetti
 - li stampo in pagina */
+
 const cont = document.getElementById("container");
 for (let i = 0; i < posts.length; i++) {
     
@@ -95,19 +96,40 @@ for (let i = 0; i < posts.length; i++) {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" data-postid="${[i]}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
+                    Piace a <b id="${[i]}" class="js-likes-counter">${likes}</b> persone
                 </div>
             </div>
         </div>
     </div>
     `
- }
+}
 
 /*aggiungo un eventlistener al pulsante mi piace
-- incremento il contatore e aggiungo una classe per dare il feedback all'utente */
+- se il pulsante non è mai stato cliccato incremento il contatore e aggiungo una classe per dare il feedback all'utente
+- se il pulsante è già stato cliccato decremento il contatore e rimuovo la classe di feedback*/
+const likeBtn = document.getElementsByClassName("like-button");
+
+for (let i = 0; i < likeBtn.length; i++) {
+    let conteggioLike = document.getElementById([i]);
+    likeBtn[i].addEventListener('click',
+        function () {
+            if (this.classList.contains("like-button--liked") === false) {
+                posts[i].likes++;
+                conteggioLike.innerHTML = posts[i].likes;
+                console.log(posts[i].likes);
+                this.classList.add("like-button--liked");
+            } else {
+                posts[i].likes--;
+                conteggioLike.innerHTML = posts[i].likes;
+                console.log(posts[i].likes);
+                this.classList.remove("like-button--liked");
+            }
+        }
+    );
+}
