@@ -9,3 +9,12 @@
 // numero di likes.
 // - Prendendo come riferimento il layout di esempio presente nell’html, stampiamo i post del nostro feed.
 // - Rendiamo il tasto “Mi Piace” cliccabile con incremento del counter dei likes.
+
+// creo un array di oggetti con le informazioni che mi servono
+
+/* genero in pagina i post
+- uso un ciclo for per generare i post con le informazioni degli oggetti
+- li stampo in pagina */
+
+/*aggiungo un eventlistener al pulsante mi piace
+- incremento il contatore e aggiungo una classe per dare il feedback all'utente */
